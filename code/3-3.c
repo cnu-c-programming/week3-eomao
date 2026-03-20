@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-int average(int count, int* nums){
+int average(int count, ...){
+    va_list args;
     int i;
     int sum = 0;
     for(i = 0; i < count; i++){
-        sum += nums[i];
+        sum += va_arg(args, int);
     }
+    va_end(args);
     return sum/count;
 }
 
